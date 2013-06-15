@@ -15,15 +15,13 @@ WRAPPER_INIT         := /usr/share/wrapper/make-wrapper-init.sh
 
 build/freenet-daemon::
 	# wrapper service sh
-	cd $(CURDIR)/contrib/freenet_ext/ && \
-	  ant -Dextlib.wrapper.suppress=false -propertyfile $(CURDIR)/debian/contrib.override.properties prepare-libsrc
 	cd $(CURDIR)/contrib/wrapper/ && \
 	  $(WRAPPER_INIT) -q < $(CURDIR)/debian/freenet-daemon.service.params > init.d
 	cd $(CURDIR)/contrib/wrapper/ && \
 	  $(CURDIR)/debian/customise-wrapper-sh.sh $(CURDIR)/debian/freenet-daemon.service.params $(CURDIR)/debian/freenet-daemon.service.preinit
 	# jar packages
 	cd $(CURDIR)/contrib/freenet_ext/ && \
-	  ant -propertyfile $(CURDIR)/debian/contrib.override.properties package
+	  ant -propertyfile $(CURDIR)/debian/contrib.override.properties jar
 	cd $(CURDIR)/fred/ && \
 	  ant -propertyfile $(CURDIR)/debian/freenet.override.properties -f build-clean.xml package
 
