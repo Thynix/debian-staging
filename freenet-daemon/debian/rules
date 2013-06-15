@@ -31,11 +31,11 @@ install/freenet-daemon::
 	  $(CURDIR)/debian/freenet-daemon.init
 	# jar packages
 	install -m 644 -t $(CURDIR)/debian/freenet-daemon/usr/share/java/freenet \
-	  $(CURDIR)/contrib/freenet_ext/dist/*.jar
+	  $(CURDIR)/contrib/freenet_ext/*.jar
 	install -m 644 -t $(CURDIR)/debian/freenet-daemon/usr/share/java \
 	  $(CURDIR)/fred/dist/freenet.jar
 	#install -m 644 -t $(CURDIR)/debian/freenet-daemon/usr/lib/java/freenet \
-	#  $(CURDIR)/contrib/freenet_ext/dist/freenet-ext_native.jar
+	#  $(CURDIR)/contrib/freenet_ext/freenet-ext_native.jar
 
 clean::
 	# jar packages
